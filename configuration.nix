@@ -85,7 +85,7 @@
     extraGroups = [ "networkmanager" "wheel" ];
     packages = with pkgs; [
       firefox
-    #  thunderbird
+      thunderbird
     ];
   };
 
@@ -98,6 +98,8 @@
     git
     helix
     keepassxc
+    kicad
+    unzip
   ];
 
   # Some programs need SUID wrappers, can be configured further or are
