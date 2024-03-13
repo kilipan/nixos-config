@@ -51,6 +51,7 @@
 
   # Configure keymap in X11
   services.xserver = {
+    # layout = "eu";
     layout = "us";
     xkbVariant = "altgr-intl";
   };
@@ -95,6 +96,7 @@
   # List packages installed in system profile. To search, run:
   # $ nix search wget
   environment.systemPackages = with pkgs; [
+    gavin-bc
     git
     helix
     keepassxc
