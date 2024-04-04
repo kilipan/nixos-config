@@ -64,7 +64,21 @@
   };
 
   # Enable CUPS to print documents.
-  services.printing.enable = true;
+  services.printing = {
+    enable = true;
+    drivers = with pkgs; [
+      brlaser
+      brgenml1lpr
+      brgenml1cupswrapper
+    ];
+  };
+
+  # Enable autodiscovery of network printers
+  services.avahi = {
+    enable = true;
+    nssmdns = true;
+    openFirewall = true;
+  };
 
   # Enable sound with pipewire.
   sound.enable = true;
@@ -85,6 +99,11 @@
 
   # Enable touchpad support (enabled default in most desktopManager).
   # services.xserver.libinput.enable = true;
+
+  # Add udev rule for wchisp usage
+  services.udev.extraRules = ''
+    SUBSYSTEM=="usb", ATTRS{idVendor}=="4348", ATTRS{idProduct}=="55e0", MODE="0666"
+  '';
 
   # Define a user account. Don't forget to set a password with ‘passwd’.
   users.users.js = {
@@ -108,7 +127,9 @@
     helix
     keepassxc
     kicad
+    tt2020
     unzip
+    usbutils
   ];
 
   # Some programs need SUID wrappers, can be configured further or are
