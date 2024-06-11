@@ -10,11 +10,18 @@
       ./hardware-configuration.nix
     ];
 
-  nix.optimise.automatic = true;
-  nix.gc = {
-    automatic = true;
-    dates = "weekly";
-    options = "--delete-older-than 30d";
+  nix = {
+    package = pkgs.nixFlakes;
+    extraOptions = ''
+      experimental-features = nix-command flakes
+    '';
+
+    optimise.automatic = true;
+    gc = {
+      automatic = true;
+      dates = "weekly";
+      options = "--delete-older-than 30d";
+    };
   };
 
   # Bootloader.
@@ -57,10 +64,9 @@
   services.xserver.desktopManager.gnome.enable = true;
 
   # Configure keymap in X11
-  services.xserver = {
-    # layout = "eu";
+  services.xserver.xkb = {
     layout = "us";
-    xkbVariant = "altgr-intl";
+    variant = "altgr-intl";
   };
 
   # Enable CUPS to print documents.
@@ -70,6 +76,8 @@
       brlaser
       brgenml1lpr
       brgenml1cupswrapper
+      gutenprint
+      gutenprintBin
     ];
   };
 
@@ -109,10 +117,8 @@
   users.users.js = {
     isNormalUser = true;
     description = "js";
-    extraGroups = [ "networkmanager" "wheel" ];
+    extraGroups = [ "networkmanager" "wheel" "dialout" ];
     packages = with pkgs; [
-      firefox
-      thunderbird
     ];
   };
 
@@ -122,12 +128,16 @@
   # List packages installed in system profile. To search, run:
   # $ nix search wget
   environment.systemPackages = with pkgs; [
-    gavin-bc
+    firefox
+    gavin-bc # better (?) implementation of bc calculator
     git
     helix
     keepassxc
     kicad
-    tt2020
+    libreoffice
+    qutebrowser
+    thunderbird
+    tt2020 # typewriter font
     unzip
     usbutils
   ];
