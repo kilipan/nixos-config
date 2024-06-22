@@ -135,6 +135,7 @@
     keepassxc
     kicad
     libreoffice
+    pixelorama
     qutebrowser
     thunderbird
     tt2020 # typewriter font
