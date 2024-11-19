@@ -129,19 +129,21 @@
   # $ nix search wget
   environment.systemPackages = with pkgs; [
     firefox
+    freecad
     gavin-bc # better (?) implementation of bc calculator
     git
     helix
     keepassxc
     kicad
+    kikit
     libreoffice
     pixelorama
     qutebrowser
     thunderbird
-    tt2020 # typewriter font
-    zip
+    # tt2020 # typewriter font
     unzip
     usbutils
+    zip
   ];
 
   # Some programs need SUID wrappers, can be configured further or are
