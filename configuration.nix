@@ -134,6 +134,7 @@
     kicad
     kikit
     libreoffice
+    neovim
     pixelorama
     qutebrowser
     thunderbird
