@@ -130,6 +130,7 @@
     gavin-bc # better (?) implementation of bc calculator
     git
     helix
+    jujutsu
     keepassxc
     kicad
     kikit
