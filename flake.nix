@@ -5,8 +5,10 @@
   inputs = {
     nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
     # Home Manager
-    home-manager.url = "github:nix-community/home-manager";
-    home-manager.inputs.nixpkgs.follows = "nixpkgs";
+    home-manager = {
+      url = "github:nix-community/home-manager";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
     # Further flakes
     #zen-browser.url = "github:MarceColl/zen-browser-flake";
     #fak-fw.url = "github:semickolon/fak";
@@ -22,7 +24,7 @@
         home-manager.nixosModules.home-manager {
           home-manager.useGlobalPkgs = true;
           home-manager.useUserPackages = true;
-          # home-manager.users.js = import ./home.nix;
+          home-manager.users.js = import ./home.nix;
         }
       ];
     };

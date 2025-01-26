@@ -87,7 +87,7 @@
 
   # Enable sound with pipewire.
   # sound.enable = true;
-  hardware.pulseaudio.enable = false;
+  services.pulseaudio.enable = false;
   security.rtkit.enable = true;
   services.pipewire = {
     enable = true;
@@ -126,19 +126,18 @@
   # $ nix search wget
   environment.systemPackages = with pkgs; [
     firefox
-    freecad
     gavin-bc # better (?) implementation of bc calculator
-    git
-    helix
-    jujutsu
-    keepassxc
-    kicad
-    kikit
-    libreoffice
-    neovim
-    pixelorama
-    qutebrowser
-    thunderbird
+    # git
+    # helix
+    # jujutsu
+    # keepassxc
+    # kicad
+    # kikit
+    # libreoffice
+    # neovim
+    # pixelorama
+    # qutebrowser
+    # thunderbird
     # tt2020 # typewriter font
     unzip
     usbutils
